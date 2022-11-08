@@ -5,13 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import com.jorgedotcom.mytasks.data.repository.ITasksRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class TasksViewModel @Inject constructor(
-    tasksRepository: ITasksRepository
-) : ViewModel() {
+class TasksViewModel(tasksRepository: ITasksRepository) : ViewModel() {
 
     private var _tasksUiState = MutableLiveData(TasksUiState())
     val tasksUiState: LiveData<TasksUiState>

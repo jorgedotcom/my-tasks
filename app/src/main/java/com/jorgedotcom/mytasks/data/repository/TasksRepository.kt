@@ -8,11 +8,8 @@ import com.jorgedotcom.mytasks.domain.model.Task
 import com.jorgedotcom.mytasks.domain.model.toTaskEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
-class TasksRepository @Inject constructor(
-    private val tasksDao: TasksDao
-) : ITasksRepository {
+class TasksRepository(private val tasksDao: TasksDao) : ITasksRepository {
 
     override suspend fun createTask(task: Task) {
         tasksDao.addTask(task.toTaskEntity())

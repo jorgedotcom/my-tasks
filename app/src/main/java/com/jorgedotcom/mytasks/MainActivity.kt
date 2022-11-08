@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,9 +19,8 @@ import com.jorgedotcom.mytasks.view.new_task.NewTaskViewModel
 import com.jorgedotcom.mytasks.view.tasks.TasksScreen
 import com.jorgedotcom.mytasks.view.tasks.TasksUiState
 import com.jorgedotcom.mytasks.view.tasks.TasksViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.compose.koinViewModel
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +39,7 @@ fun MyTasksNavHost() {
 
     NavHost(navController = navController, startDestination = "main") {
         composable("main") {
-            val tasksViewModel = hiltViewModel<TasksViewModel>()
+            val tasksViewModel = koinViewModel<TasksViewModel>()
             val uiState by tasksViewModel.tasksUiState.observeAsState(TasksUiState())
 
             TasksScreen(
@@ -59,7 +57,7 @@ fun MyTasksNavHost() {
                 }
             )
         ) {
-            val newTaskViewModel = hiltViewModel<NewTaskViewModel>()
+            val newTaskViewModel = koinViewModel<NewTaskViewModel>()
             val uiState by newTaskViewModel.newTaskUiState.collectAsState()
             if (uiState.shouldNavBack) {
                 navController.navigateUp()

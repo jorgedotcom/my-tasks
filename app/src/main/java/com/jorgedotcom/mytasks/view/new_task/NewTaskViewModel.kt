@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.jorgedotcom.mytasks.data.db.DEFAULT_TASK_ID
 import com.jorgedotcom.mytasks.data.repository.ITasksRepository
 import com.jorgedotcom.mytasks.domain.model.Task
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,11 +17,9 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
-import javax.inject.Inject
 
 @SuppressLint("CheckResult")
-@HiltViewModel
-class NewTaskViewModel @Inject constructor(
+class NewTaskViewModel(
     private val tasksRepository: ITasksRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
