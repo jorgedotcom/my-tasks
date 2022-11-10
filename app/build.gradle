@@ -76,4 +76,17 @@ dependencies {
     // Koin
     implementation 'io.insert-koin:koin-android:3.3.0'
     implementation 'io.insert-koin:koin-androidx-compose:3.3.0'
+
+    // Mockk
+    testImplementation 'io.mockk:mockk:1.13.2'
+    testImplementation 'io.mockk:mockk-android:1.13.2'
+
+    // Coroutines test
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+    // Hamcrest
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+
+    // AndroidX Test InstantTaskExecutorRule
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
